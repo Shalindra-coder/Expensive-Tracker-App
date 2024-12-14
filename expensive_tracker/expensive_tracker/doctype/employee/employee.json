@@ -12,7 +12,8 @@
   "address",
   "column_break_xblp",
   "joining_date",
-  "department"
+  "department",
+  "salary"
  ],
  "fields": [
   {
@@ -50,11 +51,16 @@
    "fieldname": "department",
    "fieldtype": "Data",
    "label": "Department"
+  },
+  {
+   "fieldname": "salary",
+   "fieldtype": "Currency",
+   "label": "Salary"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-06 20:35:24.119478",
+ "modified": "2024-12-07 08:30:19.673380",
  "modified_by": "Administrator",
  "module": "Expensive_Tracker",
  "name": "Employee",

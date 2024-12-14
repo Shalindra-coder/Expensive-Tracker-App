@@ -242,3 +242,31 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# my_custom_app/hooks.py
+
+doc_events = {
+    "Your DocType": {
+        "before_insert": "Expensive_tracker.handlers.set_default_category"
+    }
+}
+
+
+# myapp/hooks.py
+
+fixtures = ['Expense']
+
+
+# hooks.py
+
+# doc_events = {
+#     "Expense": {
+#         "on_submit": "expensive_tracker.expense1.log_expense_submission"
+#     }
+# }
+
+# doctype_js = {
+#     "Expense": "public/js/expense1.js"
+# }
+
+
+

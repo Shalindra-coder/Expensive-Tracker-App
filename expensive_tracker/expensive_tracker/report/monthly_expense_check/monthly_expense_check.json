@@ -1,0 +1,51 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2024-12-06 20:50:24.535056",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "expense_category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "mandatory": 1,
+   "options": "\nFood\nStatinory\nEntertainment",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "from_date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "end_date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 3,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2024-12-12 22:27:08.905757",
+ "modified_by": "Administrator",
+ "module": "Expensive_Tracker",
+ "name": "Monthly Expense Check",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    e.employee,\n    e.date,\n    e.expense_name,\n    e.expense_category,\n    e.amount,\n    (SELECT SUM(amount) FROM `tabExpense` WHERE employee = e.employee) AS total_amount,\n    emp.salary, \n    (emp.salary - (SELECT SUM(amount) FROM `tabExpense` WHERE employee = e.employee)) AS remaining_salary\nFROM\n    `tabExpense` e\nJOIN\n    `tabEmployee` emp ON e.employee = emp.name\nWHERE\n    e.expense_category = %(expense_category)s\n    AND e.date >= %(from_date)s\n    AND e.date <= %(end_date)s;\n",
+ "ref_doctype": "Expense",
+ "report_name": "Monthly Expense Check",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}
